@@ -22,7 +22,7 @@ variable "us-west-zones" {
 }
 
 variable "multi-region-deployment" {
-  default = true
+  default = false
 }
 
 variable "environment-name" {

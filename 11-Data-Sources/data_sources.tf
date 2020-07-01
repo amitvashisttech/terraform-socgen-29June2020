@@ -3,14 +3,25 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "us-west-2"
   region = "us-west-2"
+  alias  = "us-west-2"
 }
+
+provider "aws" {
+  region = "ap-southeast-1"
+  alias  = "myprovider"
+}
+
+
 
 data "aws_availability_zones" "us-east-1" {}
 
-data "aws_availability_zones" "us-west-2" {
-  provider = "aws.us-west-2"
+data "aws_availability_zones" "us-west-2" {   
+provider = "aws.us-west-2" 
+}
+
+data "aws_availability_zones" "myaz" {   
+provider = "aws.myprovider" 
 }
 
 variable "multi-region-deployment" {
@@ -91,4 +102,12 @@ output "west_backend_ips" {
 
 output "data-aws-azs-us-east" {
   value = "${data.aws_availability_zones.us-east-1.*.names}"
+}
+
+
+output "amit-test-az" {
+  value = "${data.aws_availability_zones.us-west-2.*.names}"
+}
+output "my-az" {
+  value = "${data.aws_availability_zones.myaz.*.names}"
 }

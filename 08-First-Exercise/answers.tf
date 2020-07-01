@@ -74,3 +74,7 @@ output "frontend_ip" {
 output "backend_ips" {
   value = "${aws_instance.backend.*.public_ip}"
 }
+
+output "backend_all_ips" {
+  value = "${list ("${aws_instance.backend.*.public_ip}" , "${aws_instance.west_backend.*.public_ip}")}"
+}

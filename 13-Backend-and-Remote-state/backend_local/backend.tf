@@ -1,13 +1,3 @@
-# terraform {
-#  backend "s3" {
-#    bucket = "terraform-demo-amitvashist"
-#    key    = "network/terraform.tfstate"
-#    region = "us-east-1"
-#  }
-#}
-
-
-
 terraform {
   backend "local" {
     path = "/tmp/terraform-local/backend/terraform.tfstate"

@@ -16,7 +16,7 @@ variable "us-east-zones" {
 }
 
 variable "us-west-zones" {
-  default = ["us-west-1c", "us-west-1b"]
+  default = ["us-west-1a", "us-west-1b"]
 }
 
 variable "multi-region-deployment" {
@@ -24,7 +24,7 @@ variable "multi-region-deployment" {
 }
 
 variable "environment-name" {
-  default = "Terraform-demo"
+  default = "TF-Demo-SG"
 }
 
 locals {
