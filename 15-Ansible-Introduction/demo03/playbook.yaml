@@ -1,0 +1,27 @@
+---
+
+- hosts: ansible
+  become: yes
+  become_method: sudo
+  tasks: 
+  - name: Installing Required Apache Packages
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Start Apache Service
+    service: name=apache2 state=started
+    when: ansible_os_family == "Debian"
+
+  - name: Installing Required HTTPD Packages
+    yum: name=apache2 state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Start HTTPD Service
+    service: name=httpd state=started
+    when: ansible_os_family == "RedHat"
+
+  - name: Download Mario Image for Web Page Background
+    get_url: url="http://www.mariomayhem.com/downloads/wallpapers/7/nsmb_wp7_1280.jpg" dest="/var/www/html/mario.jpg" mode=0755
+
+  - name: Deploy Custom Index Page
+    template: src=templates/info.j2 dest=/var/www/html/info.html
