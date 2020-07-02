@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
 
 resource "aws_volume_attachment" "ebs_att" {
@@ -9,8 +9,26 @@ resource "aws_volume_attachment" "ebs_att" {
 }
 
 resource "aws_instance" "web" {
-  ami               = "ami-08cec7c429219e339"
-  availability_zone = "us-east-2a"
+  ami               = "ami-039a49e70ea773ffc"
+  availability_zone = "us-east-1a"
+  instance_type     = "t2.micro"
+  key_name          = "${var.key_name}"
+  vpc_security_group_ids = ["${var.sg-id}"]
+
+  tags {
+    Name = "web-ebs-instance"
+  }
+}
+
+resource "aws_ebs_volume" "example" {
+  availability_zone = "us-east-1a"
+  size              = 50
+}
+
+
+resource "aws_instance" "backend" {
+  ami               = "ami-039a49e70ea773ffc"
+  availability_zone = "us-east-1a"
   instance_type     = "t2.micro"
 
   tags {
@@ -18,7 +36,3 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_ebs_volume" "example" {
-  availability_zone = "us-east-2a"
-  size              = 50
-}
