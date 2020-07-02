@@ -1,0 +1,102 @@
+    1  echo "################# Ansible Demo ####################"
+    2  apt-get install ansible -y 
+    3  ls
+    4  ansible -version
+    5  ansible --version
+    6  ls
+    7  mkdir 15-Ansible-Introduction
+    8  ls
+    9  cd 15-Ansible-Introduction/
+   10  ls
+   11  mkdir demo01
+   12  ls
+   13  cd demo01/
+   14  ls
+   15  vim inventory
+   16  ip addr 
+   17  ansible all -i inventory -m ping -u vagrant -k 
+   18  apt-get install sshpass -y 
+   19  ansible all -i inventory -m ping -u vagrant -k 
+   20  grep -i host_key_checking /etc/ansible/ansible.cfg 
+   21  cat /root/.ssh/known_hosts 
+   22  > /root/.ssh/known_hosts 
+   23  cat /root/.ssh/known_hosts 
+   24  ansible all -i inventory -m ping -u vagrant -k 
+   25  ssh vagrant@172.31.0.100
+   26  cat /root/.ssh/known_hosts 
+   27  ansible all -i inventory -m ping -u vagrant -k 
+   28  vim inventory 
+   29  ansible all -i inventory -m ping -u vagrant -k 
+   30  ansible web -i inventory -m ping -u vagrant -k 
+   31  ansible db -i inventory -m ping -u vagrant -k 
+   32  cat inventory 
+   33  vim inventory 
+   34  ansible dc -i inventory -m ping -u vagrant -k 
+   35  vi inventory 
+   36  ansible dc -i inventory -m ping -u vagrant -k 
+   37  vim inventory 
+   38  ls
+   39  rm 1
+   40  ls
+   41  ansible dc -i inventory -m ping 
+   42  cat inventory 
+   43  vim ansible.cfg
+   44  vim /etc/ansible/ansible.cfg 
+   45  ls
+   46  ansible dc -m ping 
+   47  ansible-doc -l 
+   48  ansible-doc ping
+   49  ansible-doc apt
+   50  ansible dc -m apt -a "name=apache2 state=present"
+   51  ansible ansible -m apt -a "name=apache2 state=present"
+   52  ansible ansible -m apt -a "name=apache2 state=present" -s 
+   53  ansible ansible -m apt -a "name=apache2 state=absent" -s 
+   54  which apache
+   55  which apache2
+   56  systemctl status apache2
+   57  ansible ansible -m apt -a "name=apache2 state=present" -s 
+   58  systemctl status apache2
+   59  ansible ansible -m service -a "name=apache2 state=stopped" -s 
+   60  systemctl status apache2
+   61  ansible ansible -m service -a "name=apache2 state=started" -s 
+   62  systemctl status apache2
+   63  ansible ansible -m service -a "name=apache2 state=started" -s 
+   64  ansible ansible -m service -a "name=apache2 state=started" -s  -vvv
+   65  ansible-doc  service
+   66  ansible ansible -m shell -a "systemctl status apache2" -s  
+   67  ls
+   68  cd ..
+   69  ls
+   70  cp -rf demo01 demo02
+   71  ls
+   72  cd demo0
+   73  cd demo02/
+   74  ls
+   75  vim playbook.yaml
+   76  ansible-playbook playbook.yaml 
+   77  ansible ansible -m shell -a "systemctl stop apache2" -s  
+   78  ansible ansible -m shell -a "systemctl status apache2" -s  
+   79  ansible-playbook playbook.yaml 
+   80  vi playbook.yaml 
+   81  ansible-playbook playbook.yaml 
+   82  vi playbook.yaml 
+   83  ansible-playbook playbook.yaml 
+   84  ls
+   85  cat inventory 
+   86  cat ansible.cfg 
+   87  ls
+   88  vim playbook.yaml 
+   89  ansible-playbook playbook.yaml 
+   90  cd ..
+   91  ls
+   92  cd ..
+   93  ls
+   94  git add . 
+   95  git status 
+   96  git commit -m "Ansible-Demo"; git push 
+   97  ls
+   98  history 
+   99  ls
+  100  cd 15-Ansible-Introduction/
+  101  ls
+  102  history > Ansible_Command_History.txt
