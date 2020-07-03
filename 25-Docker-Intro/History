@@ -1,0 +1,18 @@
+261  vim docker_install.sh
+  262  chmod +x docker_install.sh
+  263  ./docker_install.sh
+  264  ls
+  265  docker version
+  266  docker images
+  267  systemctl status apache2
+  268  ls
+  269  docker run -it ubuntu:16.04
+  270  docker ps
+  271  docker images
+  272  docker commit -p -m "test" 0e3f60fddc58 my-apache-img:v1
+  273  docker images
+  274  docker run -itd -p 38080:80 --name test-01 my-apache-img:v1 /bin/bash
+  275  docker ips
+  276  docker ps
+  277  docker run -itd -p 38090:80 --name test-02 my-apache-img:v1 /bin/bash
+  278  docker ps
