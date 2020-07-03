@@ -38,7 +38,7 @@ variable "disk_size" {
 }
 
 variable "node_version" {
-  default = "1.14.10-gke.27"
+  default = "1.14.10-gke.36"
 }
 
 variable "dependency_id" {

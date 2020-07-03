@@ -18,4 +18,14 @@ sudo apt-get update && sudo apt-get install google-cloud-sdk
 # Initialize Google SDK
 2. Download Google SDK 
     - glcoud init 
-       - Auth & Authorized. 	
+       - Auth & Authorized. 
+
+# Terraform apply - will create a K8s- GKE Cluster
+- Update the Project ID 
+- Update the User JSON file -> .ssh/account.json
+
+# Download Kubectl Utility to communicate with GKE Cluster	
+ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+# Check the K8s Status 
+kubectl get nodes
