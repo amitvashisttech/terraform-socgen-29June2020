@@ -3,7 +3,7 @@ module "kubernetes" {
   region = "us-east1"
 
   project_id_map = {
-    default = "k8s-terraform-demo-272708"
+    default = "cool-beanbag-272708"
   }
 }
 
