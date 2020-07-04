@@ -24,8 +24,19 @@ sudo apt-get update && sudo apt-get install google-cloud-sdk
 - Update the Project ID 
 - Update the User JSON file -> .ssh/account.json
 
+output : gcloud container clusters get-credentials cool-beanbag-XXXXXX-cluster --zone us-e ast1-b --project cool-beanbag-XXXXXX
+
+
 # Download Kubectl Utility to communicate with GKE Cluster	
  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+cp -rf kubectl /usr/bin/kubectl
+chmod +x /usr/bin/kubectl
+
+# Initialize Kubeclt.
+gcloud container clusters get-credentials cool-beanbag-XXXXXX-cluster --zone us-e ast1-b --project cool-beanbag-XXXXXX
+ls -ltr ~/.kube/config
+
 
 # Check the K8s Status 
 kubectl get nodes
