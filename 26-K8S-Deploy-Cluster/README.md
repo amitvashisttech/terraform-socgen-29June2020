@@ -69,3 +69,39 @@ service/kubernetes    ClusterIP      10.39.240.1    <none>           443/TCP    
 kubectl delete pod,svc get-started
 pod "get-started" deleted
 service "get-started" deleted
+
+
+
+# Deployment 
+kubectl create deployment my-app  --image=amitvashist7/get-started:part2
+kubeclt get deploy,pods
+
+
+# Deployment Scaling 
+kubectl scale --replicas=3 deploy my-app
+kubeclt get deploy,pods
+
+# Deployment Expose on LB 
+kubectl expose deployment my-app --port=80 --type=LoadBalancer
+kubeclt get svc 
+kubeclt describe svc my-app
+
+
+
+# Service Description - Communication Flow
+
+Noida - Laptop ( Public IP ) -->---->---->---->----->-------->----->------- 
+								          |
+									  |
+									  |		
+========================================================== ( GCP ) -> LoadBalancer
+POD01 (Container) |							  |									
+POD02 (Container) |-> Deployment  -> Service ( my-app ) ------------------
+POD03 (Container) |  
+
+
+Service Type: 
+- Cluster ( Default ) 
+- NodePort ( It will expose the same PortNumber on all the Nodes where Pod is deployed ) 
+- LoadBalancer ( Only Work with Managed K8s (i.e GCP,AKS & EKS) will create an LB )
+- External IP ( In this you can map any external IP to your Service, i.e onprimise cluster )
