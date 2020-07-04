@@ -15,7 +15,7 @@
     },
     {
     "type": "docker",
-    "image": "ubuntu:16.04",
+    "image": "amitvashist7/demo:base",
     "commit": "true" 
     }
 
@@ -27,16 +27,8 @@
                   "sudo sleep 30",
                   "sudo apt-get update",
                   "sudo apt-get install apache2 -y",
+                  "sudo chmod 777 -R /var/www/html",
                   "sudo echo 'Welcome to Packer Based Docker Image' > /var/www/html/packer.html"        ]
     }
-  ],
-  "post-processors": [
-    [
-      {
-        "type": "docker-tag",
-        "repository": "amitvashist/demo",
-        "tag": "3.0"
-      }
-    ]
- ]
+  ]
 }
