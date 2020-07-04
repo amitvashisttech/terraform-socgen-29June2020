@@ -40,3 +40,32 @@ ls -ltr ~/.kube/config
 
 # Check the K8s Status 
 kubectl get nodes
+
+# First App Deployment
+kubectl run get-started --image=amitvashist7/get-started:part2 --port=80
+kubectl get pods
+kubectl describe pod get-started
+kubectl get svc
+kubectl expose pod get-started --type=LoadBalancer
+kubectl get svc
+kubectl describe svc get-started
+
+# Status Check 
+kubectl get nodes,pods,svc
+NAME                                                       STATUS   ROLES    AGE   VERSION
+node/gke-cool-beanbag-272-cool-beanbag-272-3aa414a6-383q   Ready    <none>   90m   v1.14.10-gke.36
+node/gke-cool-beanbag-272-cool-beanbag-272-84d307bd-1mbd   Ready    <none>   90m   v1.14.10-gke.36
+node/gke-cool-beanbag-272-cool-beanbag-272-f0b9c1c3-hhxs   Ready    <none>   90m   v1.14.10-gke.36
+
+NAME              READY   STATUS    RESTARTS   AGE
+pod/get-started   1/1     Running   0          11m
+
+NAME                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+service/get-started   LoadBalancer   10.39.249.61   35.231.143.235   80:30585/TCP   7m45s
+service/kubernetes    ClusterIP      10.39.240.1    <none>           443/TCP        91m
+
+
+# Clean Up 
+kubectl delete pod,svc get-started
+pod "get-started" deleted
+service "get-started" deleted
