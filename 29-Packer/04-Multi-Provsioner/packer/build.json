@@ -1,0 +1,42 @@
+{
+  "variables": {
+    
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-1",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-hvm-2.0.*.1-x86_64-ebs",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "amazon"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ami_name": "AV-Httpd-ami-packer-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./welcome.txt",
+      "destination": "/home/ec2-user/"
+    },
+    {
+      "type": "shell",
+      "inline": ["ls -al /home/ec2-user", "cat /home/ec2-user/welcome.txt"]
+    },
+    {
+      "type": "shell",
+      "script": "apache.sh"
+   }
+ ]
+}
