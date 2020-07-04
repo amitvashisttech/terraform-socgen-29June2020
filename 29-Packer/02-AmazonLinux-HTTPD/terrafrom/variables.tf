@@ -7,9 +7,9 @@ variable "pvt_key" {
 }
 
 variable "us-east-zones" {
-  default = ["us-east-2a", "us-east-2b"]
+  default = ["us-east-1a", "us-east-1b"]
 }
 
 variable "sg-id" {
-  default = "sg-025a9dc0ed03bc43a"
+  default = "sg-06c7fd1337728e001"
 }
