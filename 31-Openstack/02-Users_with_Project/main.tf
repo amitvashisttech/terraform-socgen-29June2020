@@ -1,10 +1,10 @@
 resource "openstack_identity_project_v3" "project_1" {
-  name = "vodafone"
+  name = "soc_gen"
 }
 
 resource "openstack_identity_user_v3" "user_1" {
   default_project_id = "${openstack_identity_project_v3.project_1.id}"
-  name               = "vois_1"
+  name               = "terraform01"
   description        = "A user"
 
   password = "password123"
@@ -22,7 +22,7 @@ resource "openstack_identity_user_v3" "user_1" {
   }
 
   extra = {
-    email = "vois@vodafone.com"
+    email = "terraform01@soc_gen.com"
   }
 }
 
