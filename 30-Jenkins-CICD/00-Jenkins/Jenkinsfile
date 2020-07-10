@@ -1,0 +1,15 @@
+node {
+    
+    stage('Git CheckOut Repo.') {
+    git 'https://github.com/amitvashisttech/terraform-socgen-29June2020.git'
+    }
+    
+    
+    stage('Packer will build Hyperspace - FE') {
+    sh label: '', script: 'cd 30-Jenkins-CICD/01-Packer-hyperspace/ ; /usr/bin/packer build hyperspace-fe.json'
+    }
+    
+    
+    
+}
+
