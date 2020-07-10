@@ -15,7 +15,7 @@ variable "external_network" {
 # UUID of external gateway
 variable "external_gateway" {
   type    = string
-  default = "cc914a49-e90d-436e-b438-78fc9b1727a9"
+  default = "05a9e17f-e625-4932-aaf2-c8c05f0d8bfe"
 }
 
 variable "dns_ip" {
