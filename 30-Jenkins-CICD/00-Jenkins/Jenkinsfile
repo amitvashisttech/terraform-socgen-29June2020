@@ -6,7 +6,21 @@ node {
     
     
     stage('Packer will build Hyperspace - FE') {
-    sh label: '', script: 'cd 30-Jenkins-CICD/01-Packer-hyperspace/ ; /usr/bin/packer build hyperspace-fe.json'
+    def project_path_packer = "30-Jenkins-CICD/01-Packer-hyperspace/"
+    dir(project_path_packer) {
+    sh label: '', script: '/usr/bin/packer build hyperspace-fe.json'
+    sh label: '', script: '/usr/bin/packer build hyperspace-be.json'
+    }
+    }
+    
+    
+    
+    stage('Terraform Deploy Hyperspace ') {
+    def project_path_terraform = "30-Jenkins-CICD/02-Terraform-hyperspace"
+    dir(project_path_terraform) {
+    sh label: '', script: '/usr/bin/terraform init'
+    sh label: '', script: '/usr/bin/terraform apply -input=false -auto-approve'
+    }
     }
     
     

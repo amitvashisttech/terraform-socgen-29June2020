@@ -1,6 +1,6 @@
 provider "google" {
-  credentials = "/home/terrafrom07/.ssh/account.json"
-  project      = "k8s-terraform-demo-272708"
+  credentials = "/root/.ssh/account.json"
+  project      = "gleaming-design-282503"
   region       = "us-west1"
 }		
 //
